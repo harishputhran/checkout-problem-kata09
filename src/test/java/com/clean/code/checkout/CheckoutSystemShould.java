@@ -73,10 +73,24 @@ public class CheckoutSystemShould {
 	}
 	
 	@Test
-	public void return_discount_price_of_130_for_combination_of_items_at_checkout(){
+	public void return_discount_price_of_245_for_combination_of_items_at_checkout(){
 		CheckoutSystem checkout = new CheckoutSystem();
 		List<Item> items = Arrays.asList(itemA, itemA, itemA, itemA, itemB, itemB, itemC);
-		assertEquals(130.0d, checkout.calculateTotatlPrice(items), 0.0d);
+		assertEquals(245.0d, checkout.calculateTotatlPrice(items), 0.0d);
+	}
+	
+	@Test
+	public void return_discount_price_of_275_for_combination_of_items_at_checkout(){
+		CheckoutSystem checkout = new CheckoutSystem();
+		List<Item> items = Arrays.asList(itemA, itemA, itemA, itemA, itemB, itemB, itemB, itemC);
+		assertEquals(275.0d, checkout.calculateTotatlPrice(items), 0.0d);
+	}
+	
+	@Test
+	public void return_discount_price_of__for_combination_of_items_at_checkout(){
+		CheckoutSystem checkout = new CheckoutSystem();
+		List<Item> items = Arrays.asList(itemA, itemA, itemB, itemC);
+		assertEquals(150.0d, checkout.calculateTotatlPrice(items), 0.0d);
 	}
 
 }
