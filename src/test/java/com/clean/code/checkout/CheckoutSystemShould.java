@@ -10,9 +10,9 @@ import org.junit.runners.JUnit4;
 public class CheckoutSystemShould {	
 	
 	@Test
-	public void should_Return_0_When_No_Items_During_Checkout(){
+	public void return_0_When_No_Items_During_Checkout(){
 		CheckoutSystem checkout = new CheckoutSystem();
-		assertEquals(0, checkout.calculateTotatlPrice(null));
+		assertEquals(0.0d, checkout.calculateTotatlPrice(null), 0.0d);
 	}
 
 }
