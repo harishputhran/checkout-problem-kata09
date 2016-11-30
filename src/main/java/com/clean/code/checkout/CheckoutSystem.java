@@ -21,12 +21,11 @@ public class CheckoutSystem {
 	 * @return double
 	 */
 	public Double calculateTotatlPrice(List<Item> itemsForBillingAtCheckout) {
-		Double totalItemPrice = Double.valueOf(0.0);
 		if(itemsForBillingAtCheckout != null){
 			Map<ItemCodeEnum, Item> itemQuantityMap = mapEachItemAndItsQuantity(itemsForBillingAtCheckout);
 			return determineFinalPriceForOrderedItems(itemQuantityMap);
 		}		
-		return totalItemPrice;
+		return null;
 	}
 
 	/**

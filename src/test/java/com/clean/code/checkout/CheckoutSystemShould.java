@@ -51,7 +51,7 @@ public class CheckoutSystemShould {
 	@Test
 	public void return_price_as_0_when_no_items_at_checkout(){
 		CheckoutSystem checkout = new CheckoutSystem();
-		assertEquals(0.0d, checkout.calculateTotatlPrice(null), 0.0d);
+		assertNull(checkout.calculateTotatlPrice(null));
 	}
 	
 	@Test
