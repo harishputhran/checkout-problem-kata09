@@ -3,8 +3,11 @@ package com.clean.code.checkout;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +39,13 @@ public class CheckoutSystemShould {
 		
 		itemC = new Item(ItemCodeEnum.C);
 		itemC.setPrice(20.0d);
+	}
+	
+	@After
+	public void tearDown(){
+		itemA.setQuantity(0.0d);
+		itemB.setQuantity(0.0d);
+		itemC.setQuantity(0.0d);
 	}
 	
 	@Test
@@ -87,10 +97,23 @@ public class CheckoutSystemShould {
 	}
 	
 	@Test
-	public void return_discount_price_of__for_combination_of_items_at_checkout(){
+	public void return_discount_price_of_150_for_combination_of_items_at_checkout(){
 		CheckoutSystem checkout = new CheckoutSystem();
 		List<Item> items = Arrays.asList(itemA, itemA, itemB, itemC);
 		assertEquals(150.0d, checkout.calculateTotatlPrice(items), 0.0d);
 	}
+	
+	@Test
+	public void return_totalprice_for_all_items(){
+		CheckoutSystem checkout = new CheckoutSystem();
+		Map<ItemCodeEnum, Item> itemWithQuantityMap = new HashMap<>(2);
+		itemA.addQuantity();
+		itemB.addQuantity();
+		itemWithQuantityMap.put(ItemCodeEnum.A, itemA);
+		itemWithQuantityMap.put(ItemCodeEnum.B, itemB);
+		assertEquals(Double.valueOf(80.0), checkout.determineFinalPriceForOrderedItems(itemWithQuantityMap));
+	}
+	
+	
 
 }

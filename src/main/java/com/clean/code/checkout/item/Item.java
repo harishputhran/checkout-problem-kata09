@@ -117,6 +117,14 @@ public class Item {
 	}	
 	
 	/**
+	 * Setter for quantity.
+	 * @param double
+	 */
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+
+	/**
 	 * Method to add Quantity of an Item.
 	 * 
 	 */
