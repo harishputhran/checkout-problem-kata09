@@ -124,6 +124,23 @@ public class Item {
 		this.quantity++;
 	}
 	
+	/**
+	 * Method to get the total price of the Item including discount calculation.
+	 * @return double
+	 */
+	public double getTotalPrice(){
+		if(this.isDiscountAvailable 
+				&& this.quantity >= this.discountEligibleQuantity){
+			int countOfDiscountEligibleQuantity = (int) (this.quantity / this.discountEligibleQuantity);
+			int numberOfRemainingQuantity = (int) (this.quantity % this.discountEligibleQuantity);
+			return (this.discountPrice * countOfDiscountEligibleQuantity) + (numberOfRemainingQuantity * this.price);
+		}
+		return this.price * this.quantity;
+	}
+	
+	/**
+	 * Equals method.
+	 */
 	@Override
 	public boolean equals(Object object){
 		if(this == object){
@@ -136,6 +153,9 @@ public class Item {
 		return (itemCode != null && itemCode.equals(item.getItemCode()));
 	}
 	
+	/**
+	 * Hashcode method.
+	 */
 	@Override
 	public int hashCode(){
 		return itemCode.hashCode() * (22/7);

@@ -71,5 +71,12 @@ public class CheckoutSystemShould {
 		List<Item> items = Arrays.asList(itemA, itemA, itemA);
 		assertEquals(130.0d, checkout.calculateTotatlPrice(items), 0.0d);
 	}
+	
+	@Test
+	public void return_discount_price_of_130_for_combination_of_items_at_checkout(){
+		CheckoutSystem checkout = new CheckoutSystem();
+		List<Item> items = Arrays.asList(itemA, itemA, itemA, itemA, itemB, itemB, itemC);
+		assertEquals(130.0d, checkout.calculateTotatlPrice(items), 0.0d);
+	}
 
 }
