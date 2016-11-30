@@ -38,5 +38,12 @@ public class CheckoutSystemShould {
 		List<String> items = Arrays.asList("B", "A");
 		assertEquals(80.0d, checkout.calculateTotatlPrice(items), 0.0d);
 	}
+	
+	@Test
+	public void return_discount_price_of_130_for_3_units_of_itemA_at_checkout(){
+		CheckoutSystem checkout = new CheckoutSystem();
+		List<String> items = Arrays.asList("A", "A", "A");
+		assertEquals(130.0d, checkout.calculateTotatlPrice(items), 0.0d);
+	}
 
 }
