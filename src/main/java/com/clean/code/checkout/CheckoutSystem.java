@@ -1,32 +1,19 @@
 package com.clean.code.checkout;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import com.clean.code.checkout.item.Item;
 
 public class CheckoutSystem {
 
-	public double calculateTotatlPrice(List<String> itemsForBillingAtCheckout) {
+	public double calculateTotatlPrice(List<Item> itemsForBillingAtCheckout) {
 		Double totalItemPrice = Double.valueOf(0.0);
-		Map<String, Double> itemPriceMap = new HashMap<>();
-		itemPriceMap.put("A", Double.valueOf(50.0));
-		itemPriceMap.put("B", Double.valueOf(30.0));
-		int countofItemA = 0;
-		Double itemADiscountedPrice = Double.valueOf(130.0);
-		
+
 		if(itemsForBillingAtCheckout != null){			
-			for(String item : itemsForBillingAtCheckout){
-				if("A".equals(item)){
-					countofItemA++;
-				}else{
-					totalItemPrice += itemPriceMap.getOrDefault(item, totalItemPrice);
-				}				
+			for(Item item : itemsForBillingAtCheckout){
+				totalItemPrice += item.getPrice();
 			}
-			int numberOf3ItemAs = countofItemA/3;
-			int numberOfRemainingItemA = countofItemA % 3;
-			totalItemPrice += itemADiscountedPrice * numberOf3ItemAs + numberOfRemainingItemA * itemPriceMap.get("A"); 
 		}		
 		return totalItemPrice;
 	}
-
 }
